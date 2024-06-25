@@ -36,6 +36,10 @@ jobs:
         mv my-app/* .
         rmdir my-app
 
+    - name: Expo Web
+      run: |
+        bunx expo install react-dom react-native-web @expo/metro-runtime
+
     - name: Install tailwind
       run: |
         bun install nativewind
