@@ -36,6 +36,16 @@ jobs:
         mv my-app/* .
         rmdir my-app
 
+    - name: Install tailwind
+      run: |
+        bun install nativewind
+        bun install -d tailwindcss@3.3.2
+
+    - name: Setup tailwind
+      run: |
+        bun @tisf/regex https://raw.githubusercontent.com/t-i-f/regex/main/expo/nativewind/tailwind-config.yml
+        bun @tisf/regex https://raw.githubusercontent.com/t-i-f/regex/main/expo/nativewind/babel-config.yml
+
     - name: Commit changes
       run: |
         git config --global user.name 'github-actions[bot]'
