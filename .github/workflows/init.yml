@@ -40,6 +40,7 @@ jobs:
       run: |
         bun install nativewind
         bun install -d tailwindcss@3.3.2
+        bunx tailwindcss init
 
     - name: Setup tailwind
       run: |
