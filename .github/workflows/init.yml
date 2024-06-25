@@ -36,18 +36,23 @@ jobs:
         mv my-app/* .
         rmdir my-app
 
-    - name: Expo Web
+    - name: Install deps
       run: |
-        bunx expo install react-dom react-native-web @expo/metro-runtime
+        bun install nativewind react-native-onesignal
 
-    - name: Install tailwind
+    - name: Install devdeps
       run: |
-        bun install nativewind
         bun install -d tailwindcss@3.3.2
-        npx tailwindcss init
+
+    - name: Install expodeps
+      run: |
+        bunx expo install react-dom react-native-web @expo/metro-runtime react-native-webview
+        bunx expo install react-native-svg onesignal-expo-plugin expo-video @shopify/flash-list
+        bunx expo install expo-application @react-native-async-storage/async-storage
 
     - name: Setup tailwind
       run: |
+        npx tailwindcss init
         npx @tisf/regex https://raw.githubusercontent.com/t-i-f/regex/main/expo/nativewind/tailwind-config.yml
         npx @tisf/regex https://raw.githubusercontent.com/t-i-f/regex/main/expo/nativewind/babel-config.yml
 
